@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="css/leaflet.css">
+        <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
+        <style>
+        #map {
+            width: 1231px;
+            height: 805px;
+        }
+        </style>
+        <title></title>
+    </head>
+    <body>
+        <div id="map">
+        </div>
+        <script src="js/qgis2web_expressions.js"></script>
+        <script src="js/leaflet.js"></script>
+        <script src="js/leaflet.rotatedMarker.js"></script>
+        <script src="js/leaflet.pattern.js"></script>
+        <script src="js/leaflet-hash.js"></script>
+        <script src="js/Autolinker.min.js"></script>
+        <script src="js/rbush.min.js"></script>
+        <script src="js/labelgun.min.js"></script>
+        <script src="js/labels.js"></script>
+        <script src="data/ViapropostaAchadaPato_1.js"></script>
+        <script src="data/riberira_grande_2.js"></script>
+        <script src="data/estradas_audc_3.js"></script>
+        <script>
+        var map = L.map('map', {
+            zoomControl:true, maxZoom:28, minZoom:1
+        }).fitBounds([[14.89625508535674,-24.444464482101843],[14.900406619898535,-24.43794261363582]]);
+        var hash = new L.Hash(map);
+        map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
+        var bounds_group = new L.featureGroup([]);
+        function setBounds() {
+        }
+        var layer_GoogleSatellite_0 = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            opacity: 1.0,
+            attribution: '',
+        });
+        layer_GoogleSatellite_0;
+        map.addLayer(layer_GoogleSatellite_0);
+        function pop_ViapropostaAchadaPato_1(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Area_m2'] !== null ? Autolinker.link(String(feature.properties['Area_m2'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_ViapropostaAchadaPato_1_0() {
+            return {
+                pane: 'pane_ViapropostaAchadaPato_1',
+                opacity: 1,
+                color: 'rgba(227,26,28,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 2.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_ViapropostaAchadaPato_1');
+        map.getPane('pane_ViapropostaAchadaPato_1').style.zIndex = 401;
+        map.getPane('pane_ViapropostaAchadaPato_1').style['mix-blend-mode'] = 'normal';
+        var layer_ViapropostaAchadaPato_1 = new L.geoJson(json_ViapropostaAchadaPato_1, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_ViapropostaAchadaPato_1',
+            layerName: 'layer_ViapropostaAchadaPato_1',
+            pane: 'pane_ViapropostaAchadaPato_1',
+            onEachFeature: pop_ViapropostaAchadaPato_1,
+            style: style_ViapropostaAchadaPato_1_0,
+        });
+        bounds_group.addLayer(layer_ViapropostaAchadaPato_1);
+        function pop_riberira_grande_2(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_riberira_grande_2_0() {
+            return {
+                pane: 'pane_riberira_grande_2',
+                opacity: 1,
+                color: 'rgba(17,147,246,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 6.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+        }
+        map.createPane('pane_riberira_grande_2');
+        map.getPane('pane_riberira_grande_2').style.zIndex = 402;
+        map.getPane('pane_riberira_grande_2').style['mix-blend-mode'] = 'normal';
+        var layer_riberira_grande_2 = new L.geoJson(json_riberira_grande_2, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_riberira_grande_2',
+            layerName: 'layer_riberira_grande_2',
+            pane: 'pane_riberira_grande_2',
+            onEachFeature: pop_riberira_grande_2,
+            style: style_riberira_grande_2_0,
+        });
+        bounds_group.addLayer(layer_riberira_grande_2);
+        map.addLayer(layer_riberira_grande_2);
+        function pop_estradas_audc_3(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['id'] !== null ? Autolinker.link(String(feature.properties['id'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Nome'] !== null ? Autolinker.link(String(feature.properties['Nome'])) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cumpr_m'] !== null ? Autolinker.link(String(feature.properties['cumpr_m'])) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_estradas_audc_3_0(feature) {
+            switch(String(feature.properties['Nome'])) {
+                case 'Caminho vicinal':
+                    return {
+                pane: 'pane_estradas_audc_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Estrada cova':
+                    return {
+                pane: 'pane_estradas_audc_3',
+                opacity: 1,
+                color: 'rgba(141,9,31,1.0)',
+                dashArray: '',
+                lineCap: 'square',
+                lineJoin: 'bevel',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Estrada principal Curral Ocho':
+                    return {
+                pane: 'pane_estradas_audc_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 6.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                default:
+                    return {
+                pane: 'pane_estradas_audc_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+                case 'Caminhos vicinais':
+                    return {
+                pane: 'pane_estradas_audc_3',
+                opacity: 1,
+                color: 'rgba(0,0,0,1.0)',
+                dashArray: '',
+                lineCap: 'round',
+                lineJoin: 'round',
+                weight: 3.0,
+                fillOpacity: 0,
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_estradas_audc_3');
+        map.getPane('pane_estradas_audc_3').style.zIndex = 403;
+        map.getPane('pane_estradas_audc_3').style['mix-blend-mode'] = 'normal';
+        var layer_estradas_audc_3 = new L.geoJson(json_estradas_audc_3, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_estradas_audc_3',
+            layerName: 'layer_estradas_audc_3',
+            pane: 'pane_estradas_audc_3',
+            onEachFeature: pop_estradas_audc_3,
+            style: style_estradas_audc_3_0,
+        });
+        bounds_group.addLayer(layer_estradas_audc_3);
+        map.addLayer(layer_estradas_audc_3);
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'estradas_audc<br /><table><tr><td style="text-align: center;"><img src="legend/estradas_audc_3_Caminhovicinal0.png" /></td><td>Caminho vicinal</td></tr><tr><td style="text-align: center;"><img src="legend/estradas_audc_3_Estradacova1.png" /></td><td>Estrada cova</td></tr><tr><td style="text-align: center;"><img src="legend/estradas_audc_3_EstradaprincipalCurralOcho2.png" /></td><td>Estrada principal Curral Ocho</td></tr><tr><td style="text-align: center;"><img src="legend/estradas_audc_3_3.png" /></td><td></td></tr><tr><td style="text-align: center;"><img src="legend/estradas_audc_3_Caminhosvicinais4.png" /></td><td>Caminhos vicinais</td></tr></table>': layer_estradas_audc_3,'<img src="legend/riberira_grande_2.png" /> riberira_grande': layer_riberira_grande_2,'<img src="legend/ViapropostaAchadaPato_1.png" /> Via proposta (Achada Pato)': layer_ViapropostaAchadaPato_1,"Google Satellite": layer_GoogleSatellite_0,},{collapsed:false}).addTo(map);
+        setBounds();
+        var i = 0;
+        layer_ViapropostaAchadaPato_1.eachLayer(function(layer) {
+            var context = {
+                feature: layer.feature,
+                variables: {}
+            };
+            layer.bindTooltip((layer.feature.properties['Nome'] !== null?String('<div style="color: #000000; font-size: 10pt; font-weight: bold; font-style: italic; font-family: \'Candara\', sans-serif;">' + layer.feature.properties['Nome']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_ViapropostaAchadaPato_1'});
+            labels.push(layer);
+            totalMarkers += 1;
+              layer.added = true;
+              addLabel(layer, i);
+              i++;
+        });
+        resetLabels([layer_ViapropostaAchadaPato_1]);
+        map.on("zoomend", function(){
+            resetLabels([layer_ViapropostaAchadaPato_1]);
+        });
+        map.on("layeradd", function(){
+            resetLabels([layer_ViapropostaAchadaPato_1]);
+        });
+        map.on("layerremove", function(){
+            resetLabels([layer_ViapropostaAchadaPato_1]);
+        });
+        </script>
+    </body>
+</html>
